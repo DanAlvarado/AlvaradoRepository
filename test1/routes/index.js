@@ -10,7 +10,7 @@ var assert = require('assert');
 
 
 
-var url = 'mongodb://localhost:27017/test1';
+var url = 'mongodb://localhost:27017/config';
 
 
 
@@ -32,7 +32,7 @@ router.get('/get-data', function(req, res, next) {
 
     assert.equal(null, err);
 
-    var cursor = db.collection('config').find();
+    var cursor = db.collection('test1').find();
 
     cursor.forEach(function(doc, err) {
 
@@ -72,7 +72,7 @@ router.post('/insert', function(req, res, next) {
 
     assert.equal(null, err);
 
-    db.collection('config').insertOne(item, function(err, result) {
+    db.collection('test1').insertOne(item, function(err, result) {
 
       assert.equal(null, err);
 
@@ -112,7 +112,7 @@ router.post('/update', function(req, res, next) {
 
     assert.equal(null, err);
 
-    db.collection('config').updateOne({"_id": objectId(id)}, {$set: item}, function(err, result) {
+    db.collection('test1').updateOne({"_id": objectId(id)}, {$set: item}, function(err, result) {
 
       assert.equal(null, err);
 
@@ -138,7 +138,7 @@ router.post('/delete', function(req, res, next) {
 
     assert.equal(null, err);
 
-    db.collection('config').deleteOne({"_id": objectId(id)}, function(err, result) {
+    db.collection('test1').deleteOne({"_id": objectId(id)}, function(err, result) {
 
       assert.equal(null, err);
 
